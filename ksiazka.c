@@ -46,7 +46,7 @@ int main()
 			lista = podstawa;
 			wyswietl(&lista);
 		}		
-		printf("MENU: \n 1. Wczytaj listê kontaktów ¹æêó. \n 2. Posortuj liste kontaktow. \n 3. Dodaj kontakt. \n 4. Usun kontakt. \n 5. Wyszukuj kontaktow. \n 6. Zamknij program. \n");
+		printf("MENU: \n 1. Wczytaj liste kontaktow. \n 2. Posortuj liste kontaktow. \n 3. Dodaj kontakt. \n 4. Usun kontakt. \n 5. Szukaj kontakty. \n 6. Zamknij program. \n");
 		while ((scanf("%d", &decyzja) == 0 || decyzja > 6 || decyzja < 1))
 		{
 			printf("Podano bledna odpowiedz! \n");
@@ -60,7 +60,7 @@ int main()
 			{
 				if(wczytaj(&lista) == 1)
 					wczytano++;				
-				sort = 0;			// Poniewa¿ jeœli wczyta siê listê PO dodaniu kontatku to bêdzie nieposegregowana!
+				sort = 0;			// PoniewaÅ¼ jeÅ›li wczyta siÄ™ listÄ™ PO dodaniu kontatku to bÄ™dzie nieposegregowana!
 			} 
 			else
 			{
@@ -125,7 +125,7 @@ int main()
 			}
 			else
 			{
-				printf("Lista jest pusta i nie ma czego szukaæ! \n");
+				printf("Lista jest pusta i nie ma czego szukaÄ‡! \n");
 				system("pause");
 				break;
 			}			
@@ -322,18 +322,18 @@ int dodaj_kontakt(struct element **lista, int sort)
 	default:
 		break;
 	}
-	if ((strcoll((*lista)->dane.imie, temp->dane.imie)) == -1 && (*lista)->nastepny == NULL) // Jeœli dodany na sam koniec, przed NULL
+	if ((strcoll((*lista)->dane.imie, temp->dane.imie)) == -1 && (*lista)->nastepny == NULL) // JeÅ›li dodany na sam koniec, przed NULL
 	{
 		temp->nastepny = (*lista)->nastepny;
 		temp->poprzedni = *lista;
 		(*lista)->nastepny = temp;
 	}
-	else		//Jeœli dodany w œrodku
+	else		//JeÅ›li dodany w Å›rodku
 	{
 		temp->nastepny = (*lista);
 		temp->poprzedni = (*lista)->poprzedni;
 		(*lista)->poprzedni = temp;
-		if ((temp)->poprzedni != NULL)		//Jesli dodany na pocz¹tek!
+		if ((temp)->poprzedni != NULL)		//Jesli dodany na poczÄ…tek!
 			temp->poprzedni->nastepny = temp;
 	}
 	*lista = temp;
@@ -341,19 +341,19 @@ int dodaj_kontakt(struct element **lista, int sort)
 		*lista = (*lista)->poprzedni;
 	return 1;
 }
-void szukaj_i_n_g_A(struct element **lista)  // Funkcja szukaj¹ca imiona + nazwiska lub grupy wed³ug QUERTY lub klawiatury telefonu
+void szukaj_i_n_g_A(struct element **lista)  // Funkcja szukajÄ…ca imiona + nazwiska lub grupy wedÅ‚ug QUERTY lub klawiatury telefonu
 {
 	int i = 0, j = 0, k = 0, m = 0, n = 0, b = 0, decyzja = 0; // decyzja = 0 -> imie/nazwisko, decyzja = 1 -> grupa
 	char c = 3, *tekst = NULL, a;
 	char klawiatura[8][7] = {
-		{'a', '¹', 'b', 'c', 'æ'},
-		{'d', 'e', 'ê', 'f',},
+		{'a', 'Ä…', 'b', 'c', 'Ä‡'},
+		{'d', 'e', 'Ä™', 'f',},
 		{'g', 'h', 'i'},
-		{'j', 'k', 'l', '³'},
-		{'m', 'n', 'o', 'ó'},
-		{'p', 'q', 'r', 's', 'œ'},
+		{'j', 'k', 'l', 'Å‚'},
+		{'m', 'n', 'o', 'Ã³'},
+		{'p', 'q', 'r', 's', 'Å›'},
 		{'t', 'u', 'v'},
-		{'w', 'x', 'y', 'z', 'Ÿ', '¿'}
+		{'w', 'x', 'y', 'z', 'Åº', 'Å¼'}
 	};
 	struct element temp, *podstawa = NULL;
 	while ((*lista)->poprzedni != NULL)
